@@ -14,6 +14,8 @@ app.set('views', [
   __dirname + '/index'
 ]);
 
+app.engine('html', require('ejs').renderFile);
+
 var server = app.listen(80, function() {
   console.log("RaspAP server has started on port 80");
 });
