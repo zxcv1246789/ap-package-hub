@@ -10,6 +10,10 @@ var exec = require('child_process').exec,
   child;
 var path = require('path');
 
+app.set('views', [
+  __dirname + '/index'
+]);
+
 var server = app.listen(80, function() {
   console.log("RaspAP server has started on port 80");
 });
