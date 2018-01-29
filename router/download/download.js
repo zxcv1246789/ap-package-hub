@@ -5,6 +5,6 @@ const {
   execSync
 } = require('child_process');
 
-exports.ap_server_package = function (req, res) {
+exports.ap_server_package = function(req, res) {}
 
 }
