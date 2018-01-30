@@ -8,7 +8,7 @@ var app = express();
 var i = 0;
 var maxFileCount = 2;
 var maxFileSize = 3 * 1000 * 1000;
-var filePath = '/root/fileupload';
+var filePath = '/root/upload';
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, filePath);
