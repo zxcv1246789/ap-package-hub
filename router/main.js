@@ -24,7 +24,7 @@ module.exports = function(app, fs, url) {
       fileSize: 5 * 1024 * 1024
     }
   });
-  app.post('/api/photo',  function (req, res) => {
+  app.post('/api/photo',  function(req, res) {
     router_upload.upload_package(req, res);
   });
 }
