@@ -51,6 +51,13 @@ exports.upload_package = function (req, res) {
       const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm)
 
       console.log("hash : " + hash);
+      fs.writeFileSync(__dirname + "/../../package" + originalFileNm + ".md5",
+        hash, "utf8",
+        function(err, data) {
+          result = {
+            "success": 1
+          };
+        })
       console.log("originalFileNm : '%s', savedFileNm : '%s', size : '%s'", originalFileNm, savedFileNm, fileSize);
     }
 
