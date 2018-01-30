@@ -46,6 +46,13 @@ exports.upload_package = function (req, res) {
 
     for (var i = 0; i < fileCount; i++) {
       var originalFileNm = files[i].originalname;
+      if (originalFileNm.indexOf(".zip") != -1){
+        console.log("올바른 파일형식 입니다.");
+      }
+      else {
+        console.log("올바른 파일형식이 아닙니다.");
+        return;
+      }
       var savedFileNm = files[i].filename; // + i ;//+ '-' + Date.now();
       var fileSize = files[i].size;
       const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
