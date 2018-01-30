@@ -17,7 +17,6 @@ var storage = multer.diskStorage({
   filename: function(req, file, callback) {
     i++;
     callback(null, file.originalname);
-
     if (maxFileCount == i) {
       i = 0;
     }
@@ -46,16 +45,20 @@ exports.upload_package = function (req, res) {
 
     for (var i = 0; i < fileCount; i++) {
       var originalFileNm = files[i].originalname;
-      if (originalFileNm.indexOf(".zip") != -1){
+      var savedFileNm = files[i].filename; // + i ;//+ '-' + Date.now();
+      var fileSize = files[i].size;
+      const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
+
+      if (file.originalname.indexOf(".zip") != -1){
         console.log("올바른 파일형식 입니다.");
       }
       else {
         console.log("올바른 파일형식이 아닙니다.");
+        execSync('rm -r package/' + originalFileNm, {
+          encoding: 'utf8'
+        });
         return;
       }
-      var savedFileNm = files[i].filename; // + i ;//+ '-' + Date.now();
-      var fileSize = files[i].size;
-      const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
 
       console.log("hash : " + hash);
       fs.writeFileSync(__dirname + "/../../package/" + originalFileNm.replace('.zip', '') + ".md5",
