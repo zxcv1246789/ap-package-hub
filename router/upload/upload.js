@@ -33,10 +33,6 @@ var upload = multer({
 exports.upload_package = function (req, res) {
   upload(req, res, function(err) {
     //console.log(req.body);
-    var fileId = req.body.fileId;
-    var fileDesc = req.body.fileDesc;
-    console.log("fileId : '%s', fileDesc : '%s'", fileId, fileDesc);
-
     /*test*/
     console.log('=======================================');
     /*test*/
