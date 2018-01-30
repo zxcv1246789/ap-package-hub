@@ -49,7 +49,7 @@ exports.upload_package = function (req, res) {
       var fileSize = files[i].size;
       const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
 
-      if (file.originalname.indexOf(".zip") != -1){
+      if (originalFileNm.indexOf(".zip") != -1){
         console.log("올바른 파일형식 입니다.");
       }
       else {
