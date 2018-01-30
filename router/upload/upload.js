@@ -55,5 +55,6 @@ exports.upload_package = function (req, res) {
     }
 
     res.end("File is uploaded");
+    return originalFileNm;
   });
 }

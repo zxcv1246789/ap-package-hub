@@ -2,7 +2,7 @@ module.exports = function(app, fs, url) {
 
   var router_download = require('./download/download.js');
   var router_upload = require('./upload/upload.js');
-
+  var router_hash = require('./hash/hash.js');
   app.get('/', function(req, res) {
     res.render('index.html');
   });
@@ -20,6 +20,9 @@ module.exports = function(app, fs, url) {
   });
 
   app.post('/upload',  function(req, res) {
-    router_upload.upload_package(req, res);
+    var filename = router_upload.upload_package(req, res);
+    router_hash.hash_mkfile(filename);
   });
+
+
 }
