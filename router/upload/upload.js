@@ -3,6 +3,9 @@ var util = require('util');
 var multer = require('multer');
 var fs = require('fs');
 const md5File = require('md5-file');
+const {
+  execSync
+} = require('child_process');
 
 var app = express();
 
