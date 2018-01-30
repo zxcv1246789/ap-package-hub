@@ -8,14 +8,14 @@ var app = express();
 var i = 0;
 var maxFileCount = 2;
 var maxFileSize = 3 * 1000 * 1000;
-var filePath = '/root/upload';
+var filePath = '/root/upload';//폴더가 이미 만들어져있어야합니다
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, filePath);
   },
   filename: function(req, file, callback) {
     i++;
-    callback(null, file.fieldname + i + '-' + Date.now());
+    callback(null, file.originalname + i + '-' + Date.now());
 
     if (maxFileCount == i) {
       i = 0;
