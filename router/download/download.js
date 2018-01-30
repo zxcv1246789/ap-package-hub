@@ -7,7 +7,7 @@ const {
 
 exports.ap_server_package = function(req, res) {
   var files = fs.readdirSync(__dirname + '/../../package/');
-  console.log(files.length);
+  console.log("파일의 총 개수(hash파일 포함) : " + files.length);
   var sidemenus = {};
   for (var i = 0; i < files.length; i++) {
     var dir_name = files[i];
