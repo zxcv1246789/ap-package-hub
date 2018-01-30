@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
   },
   filename: function(req, file, callback) {
     i++;
-    callback(null, file.originalname + i + '-' + Date.now());
+    callback(null, file.originalname);
 
     if (maxFileCount == i) {
       i = 0;
@@ -28,7 +28,7 @@ var upload = multer({
   limits: {
     fileSize: maxFileSize
   }
-}).array('userPhoto', maxFileCount);
+}).array('package', maxFileCount);
 
 exports.upload_package = function (req, res) {
   upload(req, res, function(err) {

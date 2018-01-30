@@ -1,5 +1,5 @@
 module.exports = function(app, fs, url) {
-  const multer = require('multer');
+
   var router_download = require('./download/download.js');
   var router_upload = require('./upload/upload.js');
 
@@ -14,17 +14,12 @@ module.exports = function(app, fs, url) {
 
     res.download(file); // Set disposition and send it.
   });
+
   app.get('/package', function(req, res) {
     router_download.ap_server_package(req, res);
   });
 
-  const upload = multer({
-    dest: 'uploads/',
-    limits: {
-      fileSize: 5 * 1024 * 1024
-    }
-  });
-  app.post('/api/photo',  function(req, res) {
+  app.post('/upload',  function(req, res) {
     router_upload.upload_package(req, res);
   });
 }
