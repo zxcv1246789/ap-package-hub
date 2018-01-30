@@ -2,7 +2,7 @@ var express = require("express");
 var util = require('util');
 var multer = require('multer');
 var fs = require('fs');
-const md5File = require('md5-file')
+const md5File = require('md5-file');
 
 var app = express();
 
@@ -48,7 +48,7 @@ exports.upload_package = function (req, res) {
       var originalFileNm = files[i].originalname;
       var savedFileNm = files[i].filename; // + i ;//+ '-' + Date.now();
       var fileSize = files[i].size;
-      const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm)
+      const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
 
       console.log("hash : " + hash);
       fs.writeFileSync(__dirname + "/../../package/" + originalFileNm.replace('.zip', '') + ".md5",
