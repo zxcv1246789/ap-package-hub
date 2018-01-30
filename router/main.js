@@ -20,8 +20,7 @@ module.exports = function(app, fs, url) {
   });
 
   app.post('/upload',  function(req, res) {
-    var filename = router_upload.upload_package(req, res);
-    router_hash.hash_mkfile(filename);
+    router_upload.upload_package(req, res);
   });
 
 
