@@ -22,6 +22,8 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
   }
   var data = [username, content];
 
+  console.log("content : " + content);
+
   pool.getConnection(function(err, connection) {
     var sql = "";
     sql = "INSERT INTO pkg_download_history(Name, Date, Log_content) VALUES(?, NOW(),?);";
