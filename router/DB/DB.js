@@ -27,10 +27,9 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
     if (err) throw err;
 
     connection.query(sql, data, function(err, rows) {
-
+      connection.release();
       console.log("확인");
     });
-    connection.release();
   });
 
   result = {
