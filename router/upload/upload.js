@@ -52,20 +52,13 @@ exports.upload_package = function (req, res) {
       var fileSize = files[i].size;
       const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
 
-      if (originalFileNm.indexOf(".zip") != -1){
+      /*if (originalFileNm.indexOf(".zip") != -1){
         console.log("올바른 파일형식 입니다.");
       }
       else {
         console.log("올바른 파일형식이 아닙니다.");
-        if (originalFileNm.indexOf(" ") != -1) {
-          originalFileNm = originalFileNm.replace(/[\s]/g, '\ ');
-          /*execSync('rm package/' + originalFileNm, {
-            encoding: 'utf8'
-          });*/
-          console.log("originalFileNm : " + originalFileNm);
-        }
         return;
-      }
+      }*/
 
       console.log("hash : " + hash);
       fs.writeFileSync(__dirname + "/../../package/" + originalFileNm.replace('.zip', '') + ".md5",
