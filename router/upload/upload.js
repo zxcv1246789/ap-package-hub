@@ -58,7 +58,7 @@ exports.upload_package = function (req, res) {
       else {
         console.log("올바른 파일형식이 아닙니다.");
         if (originalFileNm.indexOf(" ") != -1) {
-          originalFileNm = originalFileNm.replace(/\s/gi, '\ ');
+          originalFileNm = originalFileNm.replace(/[\s]/g, '\ ');
           /*execSync('rm package/' + originalFileNm, {
             encoding: 'utf8'
           });*/
