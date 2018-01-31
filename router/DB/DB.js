@@ -11,7 +11,8 @@ var pool = mysql.createPool({
   host: 'localhost',
   user: 'pi',
   password: 'raspberry',
-  database: 'aphubdb'
+  database: 'aphubdb',
+  insecureAuth: true
 });
 
 exports.insert_download_log = function(req, res, username, type, packagename) {
