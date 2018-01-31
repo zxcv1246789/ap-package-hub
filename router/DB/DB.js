@@ -29,7 +29,7 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
 
     connection.query(sql, data, function(err, rows) {
       connection.release();
-      console.log("확인");
+      console.log("content : " + content);
     });
   });
 
