@@ -39,3 +39,27 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
   }
   res.send(result);
 }
+exports.insert_upload_log = function(req, res, username, type, packagename) {
+  var content = "";
+  if (type == 1) {
+    content += packagename + " download 완료";
+  }
+  var data = [username, content];
+
+
+  pool.getConnection(function(err, connection) {
+    var sql = "";
+    sql = "INSERT INTO pkg_upload_history(Name, Date, Log_content) VALUES(?, NOW(),?);";
+    if (err) throw err;
+
+    connection.query(sql, data, function(err, rows) {
+      connection.release();
+      console.log("content : " + content);
+    });
+  });
+
+  result = {
+    'success': '1'
+  }
+  res.send(result);
+}
