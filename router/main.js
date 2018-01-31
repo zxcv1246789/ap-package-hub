@@ -24,7 +24,7 @@ module.exports = function(app, fs, url) {
     router_upload.upload_package(req, res);
   });
 
-  app.post('/savelog', finction(req, res) {
+  app.post('/savelog', function(req, res) {
 
     var username = req.query.username;
     var type = req.query.type;
