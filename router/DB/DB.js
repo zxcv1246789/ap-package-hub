@@ -10,7 +10,6 @@ var pool = mysql.createPool({
   connectionLimit: 10,
   host: 'localhost',
   user: 'root',
-  insecureAuth: true,
   password: 'raspberry',
   database: 'aphubdb'
 });
