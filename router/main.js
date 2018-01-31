@@ -31,5 +31,5 @@ module.exports = function(app, fs, url) {
     var packagename = req.query.packagename;
 
     router_DB.insert_download_log(req, res, username, type, packagename);
-  }),
+  });
 }
