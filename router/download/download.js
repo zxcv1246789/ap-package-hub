@@ -8,7 +8,7 @@ const {
 exports.download_package = function(req, res) {
   var name = req.query.name;
 
-  var file = __dirname + '/../package/' + name + '.zip';
+  var file = __dirname + '/../../package/' + name + '.zip';
 
   res.download(file); // Set disposition and send it.
 }
@@ -16,7 +16,7 @@ exports.download_package = function(req, res) {
 exports.download_hash = function(req, res) {
   var name = req.query.name;
 
-  var file = __dirname + '/../package/' + name + '.md5';
+  var file = __dirname + '/../../package/' + name + '.md5';
 
   res.download(file); // Set disposition and send it.
 }
