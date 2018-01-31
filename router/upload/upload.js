@@ -104,8 +104,4 @@ exports.insert_upload_log = function(req, res, username, type, packagename) {
     });
   });
 
-  result = {
-    'success': '1'
-  }
-  res.send(result);
 }
