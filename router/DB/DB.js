@@ -22,7 +22,6 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
   }
   var data = [username, content];
 
-  console.log("content : " + content);
 
   pool.getConnection(function(err, connection) {
     var sql = "";

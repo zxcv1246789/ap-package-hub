@@ -29,7 +29,9 @@ module.exports = function(app, fs, url) {
     var username = req.query.username;
     var type = req.query.type;
     var packagename = req.query.packagename;
-    console.log("post 확인");
+    console.log("username : " + username);
+    console.log("type : " + type);
+    console.log("packagename : " + packagename);
     router_DB.insert_download_log(req, res, username, type, packagename);
   });
 }
