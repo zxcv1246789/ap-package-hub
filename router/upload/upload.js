@@ -62,6 +62,7 @@ exports.upload_package = function (req, res) {
           /*execSync('rm package/' + originalFileNm, {
             encoding: 'utf8'
           });*/
+          console.log("originalFileNm : " + originalFileNm);
         }
         return;
       }
