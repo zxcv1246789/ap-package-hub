@@ -26,7 +26,7 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
     sql = "INSERT INTO pkg_download_history(Name, Date, Log_content) VALUES(?, NOW(),?)";
     connection.query(sql, data, function (err, rows) {
       if(err) console.error("err : " + err);
-
+      console.log("확인");
       res.redirect('/');
       connection.release();
     });
