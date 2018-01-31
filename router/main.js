@@ -3,23 +3,17 @@ module.exports = function(app, fs, url) {
   var router_download = require('./download/download.js');
   var router_upload = require('./upload/upload.js');
   var router_hash = require('./hash/hash.js');
+  var router_DB = require('./DB/DB.js');
+
   app.get('/', function(req, res) {
     res.render('index.html');
   });
 
   app.get('/download', function(req, res) {
-    var name = req.query.name;
-
-    var file = __dirname + '/../package/' + name + '.zip';
-
-    res.download(file); // Set disposition and send it.
+    router_download.download_package(req, res);
   });
   app.get('/hash', function(req, res) {
-    var name = req.query.name;
-
-    var file = __dirname + '/../package/' + name + '.md5';
-
-    res.download(file); // Set disposition and send it.
+    router_download.download_hash(req, res);
   });
 
   app.get('/package', function(req, res) {
@@ -30,5 +24,12 @@ module.exports = function(app, fs, url) {
     router_upload.upload_package(req, res);
   });
 
+  app.post('/savelog', finction(req, res) {
 
+    var username = req.query.username;
+    var type = req.query.type;
+    var packagename = req.query.packagename;
+
+    router_DB.insert_download_log(req, res, username, type, packagename);
+  }),
 }
