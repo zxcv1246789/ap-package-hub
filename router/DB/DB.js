@@ -23,7 +23,7 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
 
   pool.getConnection(function (err, connection) {
     var sql = "";
-    sql = "INSERT INTO pkg_download_history(Name, Date, Log_content) VALUES(?, NOW(),?)";
+    sql = "INSERT INTO pkg_download_history(Name, Date, Log_content) VALUES(?, NOW(),?);";
     connection.query(sql, data, function (err, rows) {
       if(err) console.error("err : " + err);
       console.log("확인");
