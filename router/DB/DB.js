@@ -48,7 +48,7 @@ exports.download_history_get = function (req, res) {
           "from pkg_download_history;";
     if (err) throw err;
 
-    connection.query(sql, data, function(err, rows) {
+    connection.query(sql, function(err, rows) {
       if (err) console.error("err : " + err);
       console.log("rows : " + JSON.stringify(rows));
       connection.release();
