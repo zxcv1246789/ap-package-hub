@@ -29,6 +29,7 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
     if (err) throw err;
 
     connection.query(sql, data, function(err, rows) {
+      if (err) console.error("err : " + err);
       connection.release();
       console.log("content : " + content);
     });
@@ -38,4 +39,19 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
     'success': '1'
   }
   res.send(result);
+}
+
+exports.download_history_get = function (req, res) {
+  pool.getConnection(function(err, connection) {
+
+    var sql = "SELECT Name, DATE_FORMAT(Date, '%Y-%m-%d') Date, Log_content " +
+          "from pkg_download_history;";
+    if (err) throw err;
+
+    connection.query(sql, data, function(err, rows) {
+      if (err) console.error("err : " + err);
+      console.log("rows : " + JSON.stringify(rows));
+      connection.release();
+    });
+  });
 }
