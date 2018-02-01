@@ -59,7 +59,8 @@ exports.download_history_get = function (req, res) {
         content += "Log : " + rows[a]['Log_content'];
         content += " ";
       }
-      console.log(content);
+      var content2 = "qweqweqweqwe\nsdfoisjdfoij";
+      console.log(content2);
       res.send(content);
       connection.release();
     });
