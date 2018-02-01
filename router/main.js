@@ -38,9 +38,9 @@ module.exports = function(app, fs, url) {
   app.get('/download_hostory', function(req, res) {
     router_DB.download_history_get(req, res);
 
-  }
+  });
   app.get('/upload_hostory', function(req, res) {
 
 
-  }
+  });
 }
