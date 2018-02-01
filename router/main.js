@@ -35,11 +35,11 @@ module.exports = function(app, fs, url) {
     router_DB.insert_download_log(req, res, username, type, packagename);
   });
 
-  app.get('/download_hostory', function(req, res) {
+  app.get('/download_history', function(req, res) {
     router_DB.download_history_get(req, res);
 
   });
-  app.get('/upload_hostory', function(req, res) {
+  app.get('/upload_history', function(req, res) {
 
 
   });
