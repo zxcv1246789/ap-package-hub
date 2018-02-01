@@ -53,11 +53,11 @@ exports.download_history_get = function (req, res) {
       if (err) console.error("err : " + err);
       for (var a = 0;a < Object.keys(rows); a++) {
         content += "name : " + rows[a]['Name'];
-        content += "\t";
+        content += " ";
         content += "date : " + rows[a]['Date'];
-        content += "\t";
+        content += " ";
         content += "Log : " + rows[a]['Log_content'];
-        content += "\n";
+        content += " ";
       }
       console.log(content);
       res.send(content);
