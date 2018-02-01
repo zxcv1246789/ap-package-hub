@@ -50,7 +50,7 @@ exports.download_history_get = function (req, res) {
 
     connection.query(sql, function(err, rows) {
       if (err) console.error("err : " + err);
-      console.log("rows : " + JSON.stringify(rows));
+      res.send(rows);
       connection.release();
     });
   });
