@@ -45,7 +45,7 @@ exports.download_history_get = function (req, res) {
   var content = "";
   pool.getConnection(function(err, connection) {
 
-    var sql = "SELECT Name, DATE_FORMAT(Date, '%Y-%m-%d') Date, Log_content " +
+    var sql = "SELECT Name, Date, Log_content " +
           "from pkg_download_history;";
     if (err) throw err;
 
@@ -69,7 +69,7 @@ exports.upload_history_get = function (req, res) {
   var content = "";
   pool.getConnection(function(err, connection) {
 
-    var sql = "SELECT Name, DATE_FORMAT(Date, '%Y-%m-%d') Date, Log_content " +
+    var sql = "SELECT Name, Date, Log_content " +
           "from pkg_upload_history;";
     if (err) throw err;
 
