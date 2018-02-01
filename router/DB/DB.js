@@ -60,7 +60,7 @@ exports.download_history_get = function (req, res) {
         content += " ";
       }
       var content2 = "qweqweqweqwe\nsdfoisjdfoij";
-      console.log(content2);
+      console.log(rows[0]['Name']);
       res.send(content);
       connection.release();
     });
