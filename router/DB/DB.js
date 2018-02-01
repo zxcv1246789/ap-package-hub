@@ -42,7 +42,6 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
 }
 
 exports.download_history_get = function (req, res) {
-  var content = "";
   pool.getConnection(function(err, connection) {
 
     var sql = "SELECT Name, DATE_FORMAT(Date, '%Y-%m-%d') Date, Log_content " +
@@ -51,6 +50,7 @@ exports.download_history_get = function (req, res) {
 
     connection.query(sql, function(err, rows) {
       if (err) console.error("err : " + err);
+      var content = "";
       for (var a = 0;a < Object.keys(rows); a++) {
         content += "name : " + rows[a]['Name'];
         content += " ";
