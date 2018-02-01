@@ -37,10 +37,8 @@ module.exports = function(app, fs, url) {
 
   app.get('/download_history', function(req, res) {
     router_DB.download_history_get(req, res);
-
   });
   app.get('/upload_history', function(req, res) {
-
-
+    router_DB.upload_history_get(req, res);
   });
 }
