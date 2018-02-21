@@ -22,7 +22,7 @@ var pool = mysql.createPool({
 var i = 0;
 var maxFileCount = 2;
 var maxFileSize = 3 * 1000 * 1000;
-var filePath = '/root/ap-package-hub/package';//폴더가 이미 만들어져있어야합니다
+var filePath = '/root/ap-package-hub/package'; //폴더가 이미 만들어져있어야합니다
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, filePath);
@@ -43,7 +43,7 @@ var upload = multer({
   }
 }).array('package', maxFileCount);
 
-exports.upload_package = function (req, res) {
+exports.upload_package = function(req, res) {
   upload(req, res, function(err) {
     //console.log(req.body);
     /*test*/
@@ -60,7 +60,7 @@ exports.upload_package = function (req, res) {
       var originalFileNm = files[i].originalname;
       var savedFileNm = files[i].filename; // + i ;//+ '-' + Date.now();
       var fileSize = files[i].size;
-      const hash = md5File.sync( __dirname + '/../../package/' + originalFileNm);
+      const hash = md5File.sync(__dirname + '/../../package/' + originalFileNm);
 
       console.log("hash : " + hash);
       fs.writeFileSync(__dirname + "/../../package/" + originalFileNm.replace('.zip', '') + ".md5",
@@ -81,7 +81,11 @@ exports.upload_package = function (req, res) {
 
     var username = "admin";
     var type = 1;
-    exports.insert_upload_log(req, res, username, type, files[0].originalname.replace('.zip', ''));
+    if (files[0].originalname == null) {
+
+    } else {
+      exports.insert_upload_log(req, res, username, type, files[0].originalname.replace('.zip', ''));
+    }
   });
 }
 
