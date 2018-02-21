@@ -81,11 +81,8 @@ exports.upload_package = function(req, res) {
 
     var username = "admin";
     var type = 1;
-    if (files[0].originalname == null) {
-
-    } else {
-      exports.insert_upload_log(req, res, username, type, files[0].originalname.replace('.zip', ''));
-    }
+    exports.insert_upload_log(req, res, username, type, files[0].originalname.replace('.zip', ''));
+    
   });
 }
 
