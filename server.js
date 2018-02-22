@@ -9,6 +9,10 @@ var querystring = require('querystring');
 var exec = require('child_process').exec,
   child;
 var path = require('path');
+import Vue from 'vue'
+import VueClip from 'vue-clip'
+
+Vue.use(VueClip)
 
 app.set('views', [
   __dirname + '/index'
