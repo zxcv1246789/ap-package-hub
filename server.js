@@ -9,11 +9,12 @@ var querystring = require('querystring');
 var exec = require('child_process').exec,
   child;
 var path = require('path');
+/*
 var Vue = require('vue');
 var VueClip = require('vue-clip');
 
 Vue.use(VueClip);
-
+*/
 app.set('views', [
   __dirname + '/index'
 ]);
