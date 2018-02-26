@@ -8,14 +8,14 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [{
-      path: '/',
-      name: 'index',
-      component: Index
-    },
-    {
-      path: '/:id',
-      name: 'show',
-      component: Show
-    }
+    path: '/',
+    name: 'index',
+    component: Index
+  },
+  {
+    path: '/:id',
+    name: 'show',
+    component: Show
+  }
   ]
 })
