@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import App from './test_upload'
 
 new Vue({
