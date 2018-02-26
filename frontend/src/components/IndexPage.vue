@@ -4,7 +4,7 @@
   <div v-for="movie in movies" class="movie">
     <img v-bind:src="movie.poster" class="poster">
     <div>
-      <strong></strong>, <i></i> []
+      <strong>{{ movie.name }}</strong>, <i>{{movie.director}}</i> [{{movie.year}}]
       <router-link :to="{ name: 'show', params: { id: movie.id }}">더보기</router-link>
     </div>
   </div>
