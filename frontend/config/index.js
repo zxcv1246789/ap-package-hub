@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://39.119.118.152:3000/api',
+        target: 'http://172.16.171.182:3000/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -21,7 +21,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: '39.119.118.152', // can be overwritten by process.env.HOST
+    host: '172.16.171.182', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
