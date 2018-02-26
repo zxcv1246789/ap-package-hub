@@ -8,12 +8,12 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [{
-    path: '/movie',
+    path: '/',
     name: 'index',
     component: Index
   },
   {
-    path: '/movie/:id',
+    path: '/:id',
     name: 'show',
     component: Show
   }

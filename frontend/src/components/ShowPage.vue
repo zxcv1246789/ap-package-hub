@@ -9,7 +9,7 @@
 export default {
   created: function(){
     var id = this.$route.params.id
-    this.$http.get(`/movie/${id}`)
+    this.$http.get(`/${id}`)
       .then((response) => {
         this.movie = response.data
       })
