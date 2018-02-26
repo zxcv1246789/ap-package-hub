@@ -13,19 +13,7 @@
     <span id="status"></span>
   </form>
 
-  <template>
-<div>
-  <!-- Styled -->
-  <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
-  <div class="mt-3">Selected file: {{file && file.name}}</div>
-
-  <!-- Plain mode -->
-  <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
-  <div class="mt-3">Selected file: {{file2 && file2.name}}</div>
-</div>
-</template>
-
-
+  <div id="app"></div>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
