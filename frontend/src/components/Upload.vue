@@ -1,7 +1,7 @@
 <template>
 <div>
   <!-- Styled -->
-  <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
+  <b-form-file v-model="file" :state="Boolean(file)"></b-form-file>
   <div class="mt-3">Selected file: {{file && file.name}}</div>
 
 </div>
