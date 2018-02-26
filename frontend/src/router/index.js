@@ -7,7 +7,7 @@ import Index from 'components/IndexPage'
 import Show from 'components/ShowPage'
 
 export default new Router({
-//  mode: 'history',
+mode: 'history',
   routes: [
     {
       path: '/',
