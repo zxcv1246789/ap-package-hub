@@ -11,7 +11,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-app.use(require('connect-history-api-fallback')());
+app.use(require('connect-history-api-fallback')())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
