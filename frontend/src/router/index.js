@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Index from 'components/IndexPage'
-import Show from 'components/ShowPage'
+import Index from '../components/IndexPage'
+import Show from '../components/ShowPage'
 
 export default new Router({
 mode: 'history',
