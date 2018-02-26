@@ -3,6 +3,7 @@ var router = express.Router();
 var movies = require('../movies.json');
 
 router.get('/', function (req, res, next) {
+  console.log(movies);
   res.send(movies);
   console.log("route -> movies.js -> /");
 });
