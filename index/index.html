@@ -12,6 +12,14 @@
     <input type="submit" name="submit" value="Upload">
     <span id="status"></span>
   </form>
+
+  <div>
+    <!-- Styled -->
+    <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
+    <div class="mt-3">Selected file: {{file && file.name}}</div>
+
+  </div>
+
   <div id="app">
     <h1>Hello, {{name}}</h1>
     <input type="text" v-model="name">
