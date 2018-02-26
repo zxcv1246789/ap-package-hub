@@ -5,3 +5,11 @@ var app = new Vue({
     name: 'Vue'
   }
 })
+export default {
+  data () {
+    return {
+      file: null,
+      file2: null
+    }
+  }
+}
