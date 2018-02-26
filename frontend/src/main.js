@@ -5,9 +5,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-import Upload from './components/Upload';
+import Upload from './components/Upload'
+import BootstrapVue from 'bootstrap-vue'
+
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+Vue.use(BootstrapVue);
 
 //전역 컴포넌트 등록
 Vue.component('app-upload', Upload);
