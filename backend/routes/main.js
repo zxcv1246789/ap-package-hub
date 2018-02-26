@@ -37,3 +37,5 @@ router.get('/download_history', function(req, res) {
 router.get('/upload_history', function(req, res) {
   router_DB.upload_history_get(req, res);
 });
+
+module.exports = router;
