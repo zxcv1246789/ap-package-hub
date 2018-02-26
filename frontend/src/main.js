@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import Upload from './Upload'
 import router from './router'
 import axios from 'axios'
 
@@ -14,4 +15,10 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
+},
+{
+  el: '#upload',
+  router,
+  components: { Upload },
+  template: '<Upload/>'
 })
