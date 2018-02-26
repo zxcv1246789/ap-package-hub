@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import App from './test_upload.vue'
 
 new Vue({
