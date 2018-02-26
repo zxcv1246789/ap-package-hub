@@ -41,6 +41,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-require('./router/main.js')(app);
+require('./routes/main.js')(app);
 
 module.exports = app;
