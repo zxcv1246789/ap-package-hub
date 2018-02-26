@@ -1,5 +1,7 @@
 module.exports = function(app) {
 
+  var path = require('path');
+  var movies = require('../movies.json');
   var router_download = require('./download/download.js');
   var router_upload = require('./upload/upload.js');
   var router_hash = require('./hash/hash.js');
