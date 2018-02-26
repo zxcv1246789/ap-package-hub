@@ -14,7 +14,7 @@
 <script>
 export default {
   created() {
-    this.$http.get('/api/movies')
+    this.$http.get('/movie')
       .then((response) => {
         this.movies = response.data
         console.log(this.movies);
