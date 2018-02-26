@@ -3,7 +3,7 @@ var router = express.Router();
 var movies = require('../movies.json');
 
 router.get('/', function (req, res, next) {
-  res.send(movies)
+  res.send(movies);
 });
 
 router.get('/:id', function (req, res, next) {
@@ -11,7 +11,7 @@ router.get('/:id', function (req, res, next) {
   var movie = movies.filter(function (movie) {
     return movie.id === id
   });
-  res.send(movie)
+  res.send(movie);
 });
 
 module.exports = router;
