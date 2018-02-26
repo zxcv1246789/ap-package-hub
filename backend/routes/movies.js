@@ -4,6 +4,7 @@ var movies = require('../movies.json');
 
 router.get('/', function (req, res, next) {
   res.send(movies);
+  console.log("route -> movies.js -> /");
 });
 
 router.get('/:id', function (req, res, next) {
@@ -12,6 +13,7 @@ router.get('/:id', function (req, res, next) {
     return movie.id === id
   });
   res.send(movie);
+  console.log("route -> index.js -> /:id");
 });
 
 module.exports = router;
