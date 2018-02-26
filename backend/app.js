@@ -5,9 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var app = express();
+var index = require('./routes/index');
+var movies = require('./routes/movies');
+var main = require('./routes/main');
 
-app.use(require('connect-history-api-fallback')())
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
+app.use('/api/movies', movies);
+app.use('/api', main);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,8 +44,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-require('./routes/main.js')(app);
 
 module.exports = app;
