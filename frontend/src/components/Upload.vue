@@ -29,12 +29,12 @@ export default {
     },
     submitFile() {
               //Initialize the form data
-      let formData = new FormData();
+      //let formData = new FormData();
           //Add the form data we need to submit
-      formData.append('file', this.file);
+      //formData.append('file', this.file);
         //Make the request to the POST /single-file URL
       axios.post('http://39.119.118.152:3000/api/upload',
-          formData, {
+          this.file, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
