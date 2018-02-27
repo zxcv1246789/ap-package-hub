@@ -12,7 +12,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
-Vue.use(VueRouter);
+Vue.use(VueRouters);
 
 /* eslint-disable no-new */
 const router = new VueRouters({
