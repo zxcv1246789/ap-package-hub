@@ -1,7 +1,7 @@
 <template>
 <div>
   <!-- Styled -->
-  <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
+  <b-form-file type="file" id="file" ref="file" v-model="file" :state="Boolean(file)" v-on:change="handleFileUpload()" placeholder="Choose a file..."></b-form-file>
   <div class="mt-3">Selected file: {{file && file.name}}</div>
   <button v-on:click="submitFile()">파일 업로드</button>
   <h1>카운터: {{ number }}</h1>
@@ -12,7 +12,6 @@
 
 <script>
 import axios from 'axios';
-import BootstrapVue from 'bootstrap-vue'
 
 export default {
   data() {
