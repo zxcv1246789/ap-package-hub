@@ -24,15 +24,15 @@ export default {
     },
     decrement: function() {
       this.number--;
-    }
+    },
     file_upload: function() {
       if (file != null) {
         this.$http.post(`http://39.119.118.152:3000/api/upload`, {
-            body: this.file
+            body: this.file;
           })
           .then(response => {})
           .catch(e => {
-            this.errors.push(e)
+            this.errors.push(e);
           })
           console.log("업로드 성공");
       } else {
