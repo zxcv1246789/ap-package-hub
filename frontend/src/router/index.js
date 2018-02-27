@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Upload from '../components/Upload'
 import Table from '../components/Table'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 export default new VueRouter({
   mode: 'history',
