@@ -1,12 +1,12 @@
 <template>
 <div>
   <!-- Styled -->
-  <b-form-file v-model="file" :state="Boolean(file)"></b-form-file>
+  <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
   <div class="mt-3">Selected file: {{file && file.name}}</div>
   <h1>카운터: {{ number }}</h1>
   <button @click="increment">증가</button>
   <button @click="decrement">감소</button>
-  <button @click="file_upload">파일 업로드</button>
+  <button v-on:click="submitFile()">파일 업로드</button>
 </div>
 </template>
 
@@ -27,16 +27,28 @@ export default {
     decrement: function() {
       this.number--;
     },
-    file_upload: function() {
-      if (this.file != null) {
-        axios.post(`http://39.119.118.152:3000/api/upload`, this.file)
-          .then(response => {})
-          .catch(e => {
-            this.errors.push(e);
-            console.log("업로드 실패");
-          })
-          console.log("업로드 성공");
-      }
+    submitFile() {
+              //Initialize the form data
+      let formData = new FormData();
+          //Add the form data we need to submit
+      formData.append('file', this.file);
+        //Make the request to the POST /single-file URL
+      axios.post('http://39.119.118.152:3000/api/upload',
+          formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        ).then(function() {
+          console.log('SUCCESS!!');
+        })
+        .catch(function() {
+          console.log('FAILURE!!');
+        });
+    },
+      //Handles a change on the file upload
+    handleFileUpload() {
+      this.file = this.$refs.file.files[0];
     }
   }
 }
