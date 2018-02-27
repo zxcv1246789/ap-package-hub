@@ -28,7 +28,7 @@ export default {
     file_upload: function() {
       if (file != null) {
         this.$http.post(`http://39.119.118.152:3000/api/upload`, {
-            body: this.file;
+            body: this.file
           })
           .then(response => {})
           .catch(e => {
