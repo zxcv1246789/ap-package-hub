@@ -5,7 +5,7 @@
     <img v-bind:src="movie.poster" class="poster">
     <div>
       <strong>{{ movie.name }}</strong>, <i>{{movie.director}}</i> [{{movie.year}}]
-      <router-link :to="{ name: 'show', params: { id: movie.id }}">더보기</router-link>
+      <router-link :to="{ name: 'show', params: { id: movie.id }}"><br />더보기</router-link>
     </div>
   </div>
 </div>
@@ -32,6 +32,7 @@ export default {
 .movie {
   float: left;
   width: 200px;
+  height: 306px;
 }
 .poster {
   width: 185px;
