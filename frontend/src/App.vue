@@ -2,7 +2,6 @@
   <div id="app">
     <app-upload></app-upload>
     <upload-table></upload-table>
-    <img src="./assets/logo.png">
     <!--<router-view/>-->
   </div>
 </template>
