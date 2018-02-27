@@ -28,6 +28,7 @@ export default {
       this.number--;
     },
     submitFile() {
+      console.log(this.file);
               //Initialize the form data
       //let formData = new FormData();
           //Add the form data we need to submit
