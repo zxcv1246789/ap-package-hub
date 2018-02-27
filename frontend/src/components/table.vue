@@ -80,7 +80,7 @@
 <script>
 import axios from 'axios';
 
-const items = [];
+const items = new Array();
 
 export default {
   created() {
