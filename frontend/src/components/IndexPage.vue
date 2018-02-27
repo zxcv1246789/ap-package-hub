@@ -27,3 +27,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.movie {
+  float: left;
+}
+</style>
