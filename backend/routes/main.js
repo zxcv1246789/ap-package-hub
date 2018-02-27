@@ -34,8 +34,13 @@ router.get('/savelog', function(req, res) {
 router.get('/download_history', function(req, res) {
   router_DB.download_history_get(req, res);
 });
+
 router.get('/upload_history', function(req, res) {
   router_DB.upload_history_get(req, res);
+});
+
+router.get('/upload_history_array', function(req, res) {
+  router_DB.upload_history_array(res);
 });
 
 module.exports = router;

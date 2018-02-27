@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 const items = [
   { isActive: true, age: 40, name: { first: 'Dickerson', last: 'Macdonald' } },
   { isActive: false, age: 21, name: { first: 'Larsen', last: 'Shaw' } },
@@ -104,8 +106,16 @@ const items = [
 ]
 
 export default {
+  created() {
+    axios.get('http://39.119.118.152:3000/api/upload_history_array')
+      .then((response) => {
+        this.tmp_data = response.data
+        console.log(this.tmp_data);
+      })
+  },
   data () {
     return {
+      tmp_data: [],
       items: items,
       fields: [
         { key: 'name', label: 'Person Full name', sortable: true },

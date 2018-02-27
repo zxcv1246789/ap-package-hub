@@ -88,3 +88,27 @@ exports.upload_history_get = function (req, res) {
     });
   });
 }
+
+exports.upload_history_array = function (res) {
+  var content = new Array();
+
+  pool.getConnection(function(err, connection) {
+
+    var sql = "SELECT Name, Date, Log_content " +
+          "from pkg_upload_history;";
+    if (err) throw err;
+
+    connection.query(sql, function(err, rows) {
+      if (err) console.error("err : " + err);
+      for (var a = 0;a < rows.length; a++) {
+        let tmp_json = new Object();
+        tmp_json.name = rows[a]['Name'];
+        tmp_json.date = rows[a]['Date'];
+        tmp_json.logcontent = rows[a]['Log_content'];
+        content.push(tmp_json);
+      }
+      res.send(content);
+      connection.release();
+    });
+  });
+}
