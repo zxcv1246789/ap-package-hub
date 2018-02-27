@@ -7,6 +7,7 @@ import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import router from './router'
 import Upload from './components/Upload'
+import Table from './components/table'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 
@@ -16,7 +17,7 @@ Vue.use(BootstrapVue);
 
 //전역 컴포넌트 등록
 Vue.component('app-upload', Upload);
-
+Vue.component('upload-table', Table);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
