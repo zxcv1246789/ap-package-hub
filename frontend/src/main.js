@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 //import에서 .vue 생략
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import routes from './router'
