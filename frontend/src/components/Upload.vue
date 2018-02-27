@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="upload_dev">
   <!-- Styled -->
   <b-form-file type="file" id="file" ref="file" v-model="file" :state="Boolean(file)" v-on:change="handleFileUpload()" placeholder="Choose a file..."></b-form-file>
   <div class="mt-3">Selected file: {{file && file.name}}</div>
@@ -54,3 +54,8 @@ export default {
   }
 }
 </script>
+<style>
+.upload_dev {
+  padding: 24px;
+}
+</style>
