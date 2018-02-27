@@ -13,7 +13,8 @@
 export default {
   data() {
     return {
-      file: null
+      file: null,
+      number: 0
     }
   },
   methods: {
