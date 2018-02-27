@@ -28,7 +28,7 @@ export default {
       this.number--;
     },
     file_upload: function() {
-      if (file != null) {
+      if (this.file != null) {
         axios.post(`http://39.119.118.152:3000/api/upload`, {
             body: this.file
           })
