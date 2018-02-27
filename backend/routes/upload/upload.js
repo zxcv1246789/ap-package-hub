@@ -22,7 +22,7 @@ var pool = mysql.createPool({
 var i = 0;
 var maxFileCount = 2;
 var maxFileSize = 3 * 1000 * 1000;
-var filePath = '/root/ap-package-hub/package'; //폴더가 이미 만들어져있어야합니다
+var filePath = '/root/ap-package-hub/backend/package'; //폴더가 이미 만들어져있어야합니다
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, filePath);
