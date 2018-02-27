@@ -31,6 +31,7 @@ export default {
 <style>
 .movie {
   float: left;
+  width: 200px;
 }
 .poster {
   width: 185px;
