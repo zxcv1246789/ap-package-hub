@@ -3,10 +3,12 @@
 //import에서 .vue 생략
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import axios from 'axios'
-import Upload from './components/Upload'
 import BootstrapVue from 'bootstrap-vue'
+import router from './router'
+import Upload from './components/Upload'
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap-vue/dist/bootstrap-vue.css"
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
