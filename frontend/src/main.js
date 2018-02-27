@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 //import에서 .vue 생략
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouters from 'vue-router'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import routes from './router'
@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue);
 
 /* eslint-disable no-new */
-const router = new VueRouter({
+const router = new VueRouters({
   routes // routes: routes 의 약어
 })
 
