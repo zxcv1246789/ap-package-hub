@@ -20,7 +20,6 @@ Vue.component('upload-table', Table);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
   components: { App },
   template: '<App/>'
 })
