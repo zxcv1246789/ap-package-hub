@@ -3,10 +3,10 @@
   <!-- Styled -->
   <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
   <div class="mt-3">Selected file: {{file && file.name}}</div>
+  <button v-on:click="submitFile()">파일 업로드</button>
   <h1>카운터: {{ number }}</h1>
   <button @click="increment">증가</button>
   <button @click="decrement">감소</button>
-  <button v-on:click="submitFile()">파일 업로드</button>
 </div>
 </template>
 
