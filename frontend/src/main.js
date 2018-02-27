@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
-import router from './router'
+//import router from './router'
 import Upload from './components/Upload'
 import Table from './components/table'
 import "bootstrap/dist/css/bootstrap.min.css"
