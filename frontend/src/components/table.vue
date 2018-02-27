@@ -49,8 +49,8 @@
              :sort-desc.sync="sortDesc"
              @filtered="onFiltered"
     >
-      <template slot="name" slot-scope="row">{{row.value.first}} {{row.value.last}}</template>
-      <template slot="isActive" slot-scope="row">{{row.value?'Yes :)':'No :('}}</template>
+      <template slot="name" slot-scope="row">{{row.value}}</template>
+      <template slot="logcontent" slot-scope="row">{{row.value}}</template>
       <template slot="actions" slot-scope="row">
         <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
         <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-1">
@@ -79,7 +79,7 @@
 
 <script>
 import axios from 'axios';
-
+/*
 const items = [
   { isActive: true, age: 40, name: { first: 'Dickerson', last: 'Macdonald' } },
   { isActive: false, age: 21, name: { first: 'Larsen', last: 'Shaw' } },
@@ -103,14 +103,15 @@ const items = [
   { isActive: false, age: 22, name: { first: 'Genevieve', last: 'Wilson' } },
   { isActive: true, age: 38, name: { first: 'John', last: 'Carney' } },
   { isActive: false, age: 29, name: { first: 'Dick', last: 'Dunlap' } }
-]
+]*/
+const items = [];
 
 export default {
   created() {
     axios.get('http://39.119.118.152:3000/api/upload_history_array')
       .then((response) => {
-        this.tmp_data = response.data
-        console.log(this.tmp_data);
+        this.items = response.data
+        console.log(this.items);
       })
   },
   data () {
@@ -118,9 +119,9 @@ export default {
       tmp_data: [],
       items: items,
       fields: [
-        { key: 'name', label: 'Person Full name', sortable: true },
-        { key: 'age', label: 'Person age', sortable: true, 'class': 'text-center' },
-        { key: 'isActive', label: 'is Active' },
+        { key: 'name', label: 'Name', sortable: true },
+        { key: 'date', label: 'Date', sortable: true, 'class': 'text-center' },
+        { key: 'logcontent', label: 'Log content' },
         { key: 'actions', label: 'Actions' }
       ],
       currentPage: 1,
