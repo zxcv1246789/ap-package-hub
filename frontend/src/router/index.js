@@ -12,10 +12,10 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index,
-      children: [
+      children: [{
         path: '',
         component: Upload
-      ]
+      }]
     },
     {
       path: '/:id',
