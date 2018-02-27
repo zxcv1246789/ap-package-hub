@@ -6,6 +6,7 @@
   <h1>카운터: {{ number }}</h1>
   <button @click="increment">증가</button>
   <button @click="decrement">감소</button>
+  <button @click="file_upload">파일 업로드</button>
 </div>
 </template>
 
@@ -23,6 +24,20 @@ export default {
     },
     decrement: function() {
       this.number--;
+    }
+    file_upload: function() {
+      if (file != null) {
+        this.$http.post(`http://39.119.118.152:3000/api/upload`, {
+            body: this.file
+          })
+          .then(response => {})
+          .catch(e => {
+            this.errors.push(e)
+          })
+          console.log("업로드 성공");
+      } else {
+        console.log("업로드 실패");
+      }
     }
   }
 }
