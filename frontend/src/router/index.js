@@ -1,19 +1,19 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
+import Upload from '../components/Upload'
+import Table from '../components/Table'
 
 Vue.use(Router)
 
-export default new Router({
+export default new VueRouter({
   mode: 'history',
   routes: [{
-    path: '/',
-    name: 'index',
-    component: Index
+    path: '/upload',
+    component: Upload
   },
   {
-    path: '/:id',
-    name: 'show',
-    component: Show
+    path: '/table',
+    component: Table
   }
   ]
 })

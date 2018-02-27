@@ -1,6 +1,5 @@
 <template>
 <div class="upload_dev">
-  <h1>업로드 관리자 페이지</h1>
   <!-- Styled -->
   <b-form-file type="file" id="file" ref="file" v-model="file" :state="Boolean(file)" v-on:change="handleFileUpload()" placeholder="Choose a file..."></b-form-file>
   <div class="mt-3">Selected file: {{file && file.name}}</div>
