@@ -11,6 +11,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import BootstrapVue from 'bootstrap-vue'
+
 export default {
   data() {
     return {
@@ -32,7 +35,7 @@ export default {
           //Add the form data we need to submit
       formData.append('package', this.file);
         //Make the request to the POST /single-file URL
-      this.$http.post('http://39.119.118.152:3000/api/upload',
+      axios.post('http://39.119.118.152:3000/api/upload',
           formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
