@@ -8,6 +8,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import Upload from './components/Upload'
 import Uploadlogtable from './components/Uploadlogtable'
 import Downloadlogtable from './components/Downloadlogtable'
+import Packagelist from './components/Packagelist'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -27,6 +28,10 @@ const routes = [
   {
     path: '/downloadlogtable',
     component: Downloadlogtable
+  },
+  {
+    path: '/packagelist',
+    component: Packagelist
   }
 ];
 
