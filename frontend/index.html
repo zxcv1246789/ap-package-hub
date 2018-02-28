@@ -6,21 +6,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>upload site</title>
   <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 10px;
-  }
+    #app {
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 10px;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
     <h1>관리자 페이지</h1>
-    <p>
+    <p v-if="islogin == false">
+      <router-link to="/loginpage">로그인 페이지</router-link>
+    </p>
+    <p v-if="islogin == true">
       <!-- 탐색을 위해 라우터 링크 구성 요소를 사용하십시오. -->
       <!-- `to` prop를 전달하여 링크를 지정하십시오. -->
       <!-- `<router-link>`는 기본적으로`<a>`태그로 렌더링 될 것입니다 -->
@@ -31,10 +34,10 @@
       <router-link to="/packagelist">패키지 리스트 보기</router-link>
       <br />
       <router-link to="/downloadlogtable">다운로드 로그 보기</router-link>
+      <!-- route outlet -->
+      <!-- 라우트와 일치하는 컴포넌트가 여기 렌더링됩니다. -->
+      <router-view></router-view>
     </p>
-    <!-- route outlet -->
-    <!-- 라우트와 일치하는 컴포넌트가 여기 렌더링됩니다. -->
-    <router-view></router-view>
 
   </div>
   <!-- built files will be auto injected -->

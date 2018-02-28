@@ -9,6 +9,7 @@ import Upload from './components/Upload'
 import Uploadlogtable from './components/Uploadlogtable'
 import Downloadlogtable from './components/Downloadlogtable'
 import Packagelist from './components/Packagelist'
+import Login from './components/Login'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -33,6 +34,10 @@ const routes = [
     path: '/packagelist',
     component: Packagelist
   }
+  {
+    path: '/loginpage',
+    component: Login
+  },
 ];
 
 
@@ -43,5 +48,8 @@ const router = new VueRouter({
 
 const app = new Vue({
   el: '#app',
-  router
+  router,
+  data : {
+    islogin: true
+  }
 });
