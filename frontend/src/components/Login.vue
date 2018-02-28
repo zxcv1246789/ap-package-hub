@@ -26,6 +26,9 @@ export default {
       axios.post('http://39.119.118.152:3000/login_check', data)
         .then(function(response) {
           console.log(response.data);
+          if(response.data == false) {
+            alert("아이디나 비밀번호가 일치하지 않습니다.");
+          }
         })
         .catch(function() {
           console.log('FAILURE!!');
