@@ -6,14 +6,19 @@ var router_DB = require('./DB/DB.js');
 var router = express.Router();
 
 router.get('/download', function(req, res) {
-  router_download.download_package(req, res);
+  var name = req.query.name;
+  const file = router_download.download_package();
+  res.download(file);
 });
 router.get('/hash', function(req, res) {
-  router_download.download_hash(req, res);
+  var name = req.query.name;
+  const file = router_download.download_hash();
+  res.download(file);
 });
 
 router.get('/package', function(req, res) {
-  router_download.ap_server_package(req, res);
+  const sidemenus = router_download.ap_server_package();
+  res.send(sidemenus);
 });
 
 router.post('/upload',  function(req, res) {
@@ -21,22 +26,26 @@ router.post('/upload',  function(req, res) {
 });
 
 router.get('/savelog', function(req, res) {
-
   var username = req.query.username;
   var type = req.query.type;
   var packagename = req.query.packagename;
   console.log("username : " + username);
   console.log("type : " + type);
   console.log("packagename : " + packagename);
-  router_DB.insert_download_log(req, res, username, type, packagename);
+  const result = router_DB.insert_download_log(username, type, packagename);
+  res.send(result);
 });
 
 router.get('/download_history', function(req, res) {
-  router_DB.download_history_get(req, res);
+  router_DB.download_history_get(res);
 });
 
 router.get('/upload_history', function(req, res) {
-  router_DB.upload_history_get(req, res);
+  router_DB.upload_history_get(res);
+});
+
+router.get('/download_history_array', function(req, res) {
+  router_DB.download_history_array(res);
 });
 
 router.get('/upload_history_array', function(req, res) {

@@ -5,23 +5,17 @@ const {
   execSync
 } = require('child_process');
 
-exports.download_package = function(req, res) {
-  var name = req.query.name;
-
+exports.download_package = function() {
   var file = __dirname + '/../../package/' + name + '.zip';
-
-  res.download(file); // Set disposition and send it.
+  return file; // Set disposition and send it.
 }
 
-exports.download_hash = function(req, res) {
-  var name = req.query.name;
-
+exports.download_hash = function() {
   var file = __dirname + '/../../package/' + name + '.md5';
-
-  res.download(file); // Set disposition and send it.
+  return file; // Set disposition and send it.
 }
 
-exports.ap_server_package = function(req, res) {
+exports.ap_server_package = function() {
   var files = fs.readdirSync(__dirname + '/../../package/');
   console.log("파일의 총 개수(hash파일 포함) : " + files.length);
   var sidemenus = {};
@@ -32,8 +26,7 @@ exports.ap_server_package = function(req, res) {
     if (dir_name.indexOf(".zip") != -1) {
       sidemenu['pack_name'] = dir_name.replace('.zip', '');
       sidemenus[dd] = sidemenu;
-    } else {
-    }
+    } else {}
   }
-  res.send(sidemenus);
+  return sidemenus;
 }

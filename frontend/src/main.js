@@ -4,11 +4,14 @@ import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
+
 import Upload from './components/Upload'
-import Table from './components/Table'
+import Uploadlogtable from './components/Uploadlogtable'
+import Downloadlogtable from './components/Downloadlogtable'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
@@ -18,8 +21,12 @@ const routes = [
     component: Upload
   },
   {
-    path: '/table',
-    component: Table
+    path: '/uploadlogtable',
+    component: Uploadlogtable
+  },
+  {
+    path: '/downloadlogtable',
+    component: Downloadlogtable
   }
 ];
 

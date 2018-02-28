@@ -15,7 +15,7 @@ var pool = mysql.createPool({
   insecureAuth: true
 });
 
-exports.insert_download_log = function(req, res, username, type, packagename) {
+exports.insert_download_log = function(username, type, packagename) {
   var content = "";
   if (type == 1) {
     content += packagename + " download 완료";
@@ -38,10 +38,10 @@ exports.insert_download_log = function(req, res, username, type, packagename) {
   result = {
     'success': '1'
   }
-  res.send(result);
+  return result;
 }
 
-exports.download_history_get = function (req, res) {
+exports.download_history_get = function (res) {
   var content = "";
   pool.getConnection(function(err, connection) {
 
@@ -64,8 +64,30 @@ exports.download_history_get = function (req, res) {
     });
   });
 }
+exports.download_history_array = function (res) {
+  var content = new Array();
 
-exports.upload_history_get = function (req, res) {
+  pool.getConnection(function(err, connection) {
+
+    var sql = "SELECT Name, Date, Log_content " +
+          "from pkg_download_history;";
+    if (err) throw err;
+
+    connection.query(sql, function(err, rows) {
+      if (err) console.error("err : " + err);
+      for (var a = 0;a < rows.length; a++) {
+        let tmp_json = new Object();
+        tmp_json.name = rows[a]['Name'];
+        tmp_json.date = rows[a]['Date'];
+        tmp_json.logcontent = rows[a]['Log_content'];
+        content.push(tmp_json);
+      }
+      res.send(content);
+      connection.release();
+    });
+  });
+}
+exports.upload_history_get = function (res) {
   var content = "";
   pool.getConnection(function(err, connection) {
 
