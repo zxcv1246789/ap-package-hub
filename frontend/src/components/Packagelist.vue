@@ -1,5 +1,5 @@
 <template>
-  <b-table striped hover :items="items"></b-table>
+<b-table striped hover :items="items"></b-table>
 </template>
 
 <script>
@@ -11,16 +11,18 @@ export default {
   created() {
     axios.get('http://39.119.118.152:3000/api/package')
       .then((response) => {
-        console.log(response.data);
-        var tmp = new Array();
-        var install_data_key = Object.getOwnPropertyNames(response.data);
-        for (var j = 0; j < Object.keys(response.data).length; j++) {
-          tmp.push(response.data[install_data_key[j]]);
+        if (response != null) {
+          console.log(response.data);
+          var tmp = new Array();
+          var install_data_key = Object.getOwnPropertyNames(response.data);
+          for (var j = 0; j < Object.keys(response.data).length; j++) {
+            tmp.push(response.data[install_data_key[j]]);
+          }
+          this.items = tmp;
         }
-        this.items = tmp;
       })
   },
-  data () {
+  data() {
     return {
       items: items
     }

@@ -7,7 +7,7 @@ var passport = require('passport');
 var isAuthenticated = function (req, res, next) {
   if (req.isAuthenticated())
     return next();
-  res.redirect('/');
+  res.redirect('/loginfail');
 };
 
 router.post('/login_check', passport.authenticate('local-login', {
@@ -21,7 +21,7 @@ router.post('/login_check', passport.authenticate('local-login', {
 router.get('/logout', isAuthenticated, function(req, res) {
   console.log("로그아웃 확인");
   req.logout();
-  res.redirect('/');
+  res.redirect('/loginfail');
 });
 
 router.get('/', function (req, res, next) {
@@ -30,7 +30,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/loginfail', function (req, res, next) {
-  res.render(path.join(__dirname, '../public', 'index.html'));
+  data = null;
+  res.send(data);
 });
 
 router.get('/favicon.ico', function(req, res) {
