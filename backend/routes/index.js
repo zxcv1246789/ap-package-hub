@@ -15,7 +15,7 @@ router.post('/login_check', passport.authenticate('local-login', {
     failureFlash: true
   }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/loginfail');
   });
 
 router.get('/logout', isAuthenticated, function(req, res) {
