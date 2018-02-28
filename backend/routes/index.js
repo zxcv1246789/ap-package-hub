@@ -15,7 +15,7 @@ router.post('/login_check', passport.authenticate('local-login', {
     failureFlash: true
   }),
   function(req, res) {
-    res.redirect('/loginfail');
+    res.redirect('/loginsuccess');
   });
 
 router.get('/logout', isAuthenticated, function(req, res) {
@@ -30,6 +30,10 @@ router.get('/', function (req, res, next) {
 
 router.get('/loginfail', function (req, res, next) {
   var data = '';
+  res.send(data);
+});
+router.get('/loginsuccess', function (req, res, next) {
+  var data = true;
   res.send(data);
 });
 
