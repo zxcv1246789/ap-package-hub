@@ -1,12 +1,15 @@
 <template>
-test
+  <div>
+    test
+  </div>
 </template>
 
-<script type="text/javascript">
+<script>
 
 export default {
   data() {
     return {
+
     }
   },
   methods: {
