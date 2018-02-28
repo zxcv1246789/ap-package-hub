@@ -20,6 +20,9 @@ export default {
           }
           this.items = tmp;
         }
+        else {
+          alert("로그인 해주세요.");
+        }
       })
   },
   data() {

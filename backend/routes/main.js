@@ -9,7 +9,7 @@ var router = express.Router();
 var isAuthenticated = function (req, res, next) {
   if (req.isAuthenticated())
     return next();
-  res.redirect('/');
+  res.redirect('/loginfail');
 };
 
 router.get('/download', isAuthenticated, function(req, res) {
