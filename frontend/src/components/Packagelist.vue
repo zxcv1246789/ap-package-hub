@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 const items = new Array();
 
 export default {
