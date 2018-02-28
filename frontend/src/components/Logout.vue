@@ -6,6 +6,7 @@
 
 <script>
 import axios from 'axios';
+import VueRouter from 'vue-router'
 
 export default {
   data() {
@@ -23,6 +24,7 @@ export default {
       axios.get('http://39.119.118.152:3000/logout')
         .then((response) => {
           alert("로그아웃 되었습니다.");
+          VueRouter.push({ path: '/loginpage' });
         })
 
 
