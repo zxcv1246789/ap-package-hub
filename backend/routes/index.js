@@ -11,7 +11,7 @@ var isAuthenticated = function (req, res, next) {
 };
 
 router.post('/login_check', passport.authenticate('local-login', {
-    failureRedirect: '/',
+    failureRedirect: '/loginfail',
     failureFlash: true
   }),
   function(req, res) {
@@ -27,6 +27,10 @@ router.get('/logout', isAuthenticated, function(req, res) {
 router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public', 'index.html'))
   console.log("route -> index.js");
+});
+
+router.get('/loginfail', function (req, res, next) {
+  res.render(path.join(__dirname, '../public', 'index.html'));
 });
 
 router.get('/favicon.ico', function(req, res) {
