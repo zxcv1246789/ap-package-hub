@@ -10,6 +10,7 @@ import Uploadlogtable from './components/Uploadlogtable'
 import Downloadlogtable from './components/Downloadlogtable'
 import Packagelist from './components/Packagelist'
 import Login from './components/Login'
+import Logout from './components/Logout'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -37,6 +38,10 @@ const routes = [
   {
     path: '/loginpage',
     component: Login
+  },
+  {
+    path: '/logoutpage',
+    component: Logout
   }
 ];
 

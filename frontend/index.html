@@ -20,13 +20,14 @@
 <body>
   <div id="app">
     <h1>관리자 페이지</h1>
-    <p v-if="islogin == false">
-      <router-link to="/loginpage">로그인</router-link>
-    </p>
-    <p v-if="islogin == true">
+    <p>
       <!-- 탐색을 위해 라우터 링크 구성 요소를 사용하십시오. -->
       <!-- `to` prop를 전달하여 링크를 지정하십시오. -->
       <!-- `<router-link>`는 기본적으로`<a>`태그로 렌더링 될 것입니다 -->
+      <router-link to="/loginpage">로그인</router-link>
+      <br />
+      <router-link to="/loginpage">로그아웃</router-link>
+      <br />
       <router-link to="/upload">업로드 하기</router-link>
       <br />
       <router-link to="/uploadlogtable">업로드 로그 보기</router-link>
