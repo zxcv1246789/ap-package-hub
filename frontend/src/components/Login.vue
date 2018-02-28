@@ -8,8 +8,6 @@
 </template>
 
 <script>
-const data = new Object();
-
 export default {
   data() {
     return {
@@ -19,11 +17,19 @@ export default {
   },
   methods: {
     submitlogin() {
-      let tmp = new Object();
-      tmp.id = this.id;
-      tmp.password = this.password;
+      let data = new Object();
+      data.id = this.id;
+      data.password = this.password;
 
-      console.log(tmp);
+      axios.post('http://39.119.118.152:3000/login_check', data)
+        .then(function() {
+          console.log('SUCCESS!!');
+        })
+        .catch(function() {
+          console.log('FAILURE!!');
+        });
+
+
     },
     //Handles a change on the file upload
     handleFileUpload() {
