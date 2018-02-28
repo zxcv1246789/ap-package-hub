@@ -33,11 +33,11 @@ const routes = [
   {
     path: '/packagelist',
     component: Packagelist
-  }
+  },
   {
     path: '/loginpage',
     component: Login
-  },
+  }
 ];
 
 
