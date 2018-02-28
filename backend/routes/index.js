@@ -25,8 +25,7 @@ router.get('/logout', isAuthenticated, function(req, res) {
 });
 
 router.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'))
-  console.log("route -> index.js");
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 router.get('/loginfail', function (req, res, next) {
