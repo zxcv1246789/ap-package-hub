@@ -24,8 +24,8 @@ export default {
       data.password = this.password;
 
       axios.post('http://39.119.118.152:3000/login_check', data)
-        .then(function() {
-          console.log('SUCCESS!!');
+        .then(function(response) {
+          console.log(response.data);
         })
         .catch(function() {
           console.log('FAILURE!!');
