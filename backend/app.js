@@ -74,7 +74,7 @@ passport.use('local-login', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true
 }, function(req, id, password, done) {
-  if (id === 'admin' && password === '12341234') {
+  if (id == 'admin' && password == '12341234') {
     return done(null, {
       'user_id': id,
     });
