@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    submitlogin() {
+    submitlogout() {
       let data = new Object();
       data.id = this.id;
       data.password = this.password;
