@@ -44,11 +44,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-var router_img = require('./routes/img/img.js');
-
-app.get('/favicon.ico', function(req, res) {
-  const favicon = router_img.get_favicon();
-  res.send(favicon);
-});
-
 module.exports = app;
