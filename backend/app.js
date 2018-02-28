@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var index = require('./routes/index');
 var movies = require('./routes/movies');
@@ -22,6 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'LeeJinWoo',
+  saveUninitialized: true,
+  resave: false,
+  cookie: { maxAge: 600000 }//600000 = 10분
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/api/movies', movies);
@@ -43,5 +54,34 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
 });
+
+passport.serializeUser(function(user, done) {
+  console.log('serializeUser() 호출됨.');
+  console.dir(user);
+
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  console.log('deserializeUser() 호출됨.');
+  console.dir(user);
+
+  done(null, user);
+});
+
+passport.use('local-login', new LocalStrategy({
+  usernameField: 'id',
+  passwordField: 'password',
+  passReqToCallback: true
+}, function(req, id, password, done) {
+  if (id === 'admin' && password === '12341234') {
+    return done(null, {
+      'user_id': id,
+    });
+  } else {
+    return done(false, null)
+  }
+}))
+
 
 module.exports = app;

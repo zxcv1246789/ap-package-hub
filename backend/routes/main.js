@@ -6,27 +6,33 @@ var router_DB = require('./DB/DB.js');
 
 var router = express.Router();
 
-router.get('/download', function(req, res) {
+var isAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/');
+};
+
+router.get('/download', isAuthenticated, function(req, res) {
   var name = req.query.name;
   const file = router_download.download_package();
   res.download(file);
 });
-router.get('/hash', function(req, res) {
+router.get('/hash', isAuthenticated, function(req, res) {
   var name = req.query.name;
   const file = router_download.download_hash();
   res.download(file);
 });
 
-router.get('/package', function(req, res) {
+router.get('/package', isAuthenticated, function(req, res) {
   const sidemenus = router_download.ap_server_package();
   res.send(sidemenus);
 });
 
-router.post('/upload',  function(req, res) {
+router.post('/upload', isAuthenticated, function(req, res) {
   router_upload.upload_package(req, res);
 });
 
-router.get('/savelog', function(req, res) {
+router.get('/savelog', isAuthenticated, function(req, res) {
   var username = req.query.username;
   var type = req.query.type;
   var packagename = req.query.packagename;
@@ -37,19 +43,19 @@ router.get('/savelog', function(req, res) {
   res.send(result);
 });
 
-router.get('/download_history', function(req, res) {
+router.get('/download_history', isAuthenticated, function(req, res) {
   router_DB.download_history_get(res);
 });
 
-router.get('/upload_history', function(req, res) {
+router.get('/upload_history', isAuthenticated, function(req, res) {
   router_DB.upload_history_get(res);
 });
 
-router.get('/download_history_array', function(req, res) {
+router.get('/download_history_array', isAuthenticated, function(req, res) {
   router_DB.download_history_array(res);
 });
 
-router.get('/upload_history_array', function(req, res) {
+router.get('/upload_history_array', isAuthenticated, function(req, res) {
   router_DB.upload_history_array(res);
 });
 
