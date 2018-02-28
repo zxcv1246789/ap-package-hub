@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/loginfail', function (req, res, next) {
-  data = null;
+  var data = '';
   res.send(data);
 });
 

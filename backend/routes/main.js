@@ -11,10 +11,7 @@ var isAuthenticated = function (req, res, next) {
     return next();
   res.redirect('/loginfail');
 };
-router.get('/loginfail', function (req, res, next) {
-  data = null;
-  res.send(data);
-});
+
 router.get('/download', isAuthenticated, function(req, res) {
   var name = req.query.name;
   const file = router_download.download_package();

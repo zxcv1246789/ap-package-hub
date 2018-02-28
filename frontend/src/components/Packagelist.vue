@@ -11,7 +11,7 @@ export default {
   created() {
     axios.get('http://39.119.118.152:3000/api/package')
       .then((response) => {
-        if (response != null) {
+        if (response.data != '') {
           console.log(response.data);
           var tmp = new Array();
           var install_data_key = Object.getOwnPropertyNames(response.data);
