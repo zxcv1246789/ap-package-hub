@@ -8,6 +8,7 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
 var index = require('./routes/index');
 var movies = require('./routes/movies');
 var main = require('./routes/main');
