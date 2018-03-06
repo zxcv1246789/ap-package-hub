@@ -13,8 +13,6 @@ import Adminlogin from './components/Adminlogin'
 import Userlogin from './components/Userlogin'
 import Logout from './components/Logout'
 
-
-
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
