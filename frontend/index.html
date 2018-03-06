@@ -34,8 +34,8 @@
     <div class="login_link">
       <h1>관리자 페이지</h1>
       <div>
-        <router-link to="/loginpage">관리자 로그인</router-link><br>
-        <router-link to="/loginpage">사용자 로그인</router-link><br>
+        <router-link to="/adminloginpage">관리자 로그인</router-link><br>
+        <router-link to="/userloginpage">사용자 로그인</router-link><br>
         <router-link to="/logoutpage">로그아웃</router-link><br>
       </div>
     </div>
@@ -50,6 +50,7 @@
       <router-link to="/packagelist">패키지 리스트 보기</router-link>
       <br />
       <router-link to="/downloadlogtable">다운로드 로그 보기</router-link>
+      <br />
       <!-- route outlet -->
       <!-- 라우트와 일치하는 컴포넌트가 여기 렌더링됩니다. -->
       <router-view></router-view>

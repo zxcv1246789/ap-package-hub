@@ -9,7 +9,8 @@ import Upload from './components/Upload'
 import Uploadlogtable from './components/Uploadlogtable'
 import Downloadlogtable from './components/Downloadlogtable'
 import Packagelist from './components/Packagelist'
-import Login from './components/Login'
+import Adminlogin from './components/Adminlogin'
+import Userlogin from './components/Userlogin'
 import Logout from './components/Logout'
 
 Vue.prototype.$http = axios
@@ -36,8 +37,12 @@ const routes = [
     component: Packagelist
   },
   {
-    path: '/loginpage',
-    component: Login
+    path: '/adminloginpage',
+    component: Adminlogin
+  },
+  {
+    path: '/userloginpage',
+    component: Userlogin
   },
   {
     path: '/logoutpage',
