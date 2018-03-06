@@ -30,8 +30,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+var index = require('./routes/index')(userid);
+var main = require('./routes/main')(userid);
+
 app.use('/', index);
-app.use('/api/movies', movies);
 app.use('/api', main);
 
 // catch 404 and forward to error handler
@@ -79,7 +81,3 @@ passport.use('local-login', new LocalStrategy({
     return done(false, null)
   }
 }))
-
-
-require('./routes/index')(userid);
-require('./routes/main')(userid);
