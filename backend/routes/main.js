@@ -7,7 +7,7 @@ var router_DB = require('./DB/DB.js');
 var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
-  console.log(req);
+  console.log(req.body);
   if (req.isAuthenticated())
     return next();
   res.redirect('/loginfail');
