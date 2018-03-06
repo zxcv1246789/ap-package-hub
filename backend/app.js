@@ -91,3 +91,5 @@ passport.use('local-login', new LocalStrategy({
 
 require('./routes/index')(app, isAuthenticated, passport);
 require('./routes/main')(app, isAuthenticated, passport);
+
+module.exports = app;
