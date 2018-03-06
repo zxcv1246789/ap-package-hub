@@ -89,7 +89,7 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 
-require('./routes/index')(app, isAuthenticated, passport);
-require('./routes/main')(app, isAuthenticated, passport);
+require('./routes/index.js')(app, isAuthenticated, passport);
+require('./routes/main.js')(app, isAuthenticated, passport);
 
 module.exports = app;
