@@ -7,12 +7,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var userid = "";
 var app = express();
-
-var index = require('./routes/index');
-var main = require('./routes/main');
-
+var userid = "";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,20 +18,21 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'LeeJinWoo',
   saveUninitialized: true,
   resave: false,
-  cookie: { maxAge: 600000 }//600000 = 10분
+  cookie: {
+    maxAge: 600000
+  } //600000 = 10분
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use('/', index);
-app.use('/api', main);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,6 +65,14 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+var isAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/');
+  }
+};
+
 passport.use('local-login', new LocalStrategy({
   usernameField: 'id',
   passwordField: 'password',
@@ -84,4 +89,5 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 
-module.exports = app;
+require('./routes/index')(app, isAuthenticated, passport);
+require('./routes/main')(app, isAuthenticated, passport);
