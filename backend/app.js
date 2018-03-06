@@ -8,15 +8,7 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var userid;
-
-var index = require('./routes/index');
-var movies = require('./routes/movies');
-var main = require('./routes/main');
-
 var app = express();
-
-index(userid)
-main(userid)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -89,4 +81,5 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 
-module.exports = app;
+require('./routes/index')(userid);
+require('./routes/main')(userid);
