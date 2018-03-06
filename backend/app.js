@@ -17,9 +17,6 @@ app.set('view engine', 'jade');
 var index = require('./routes/index.js');
 var main = require('./routes/main.js');
 
-index(app, isAuthenticated, passport)
-main(app, isAuthenticated, passport)
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -96,5 +93,10 @@ passport.use('local-login', new LocalStrategy({
     return done(false, null)
   }
 }))
+
+
+index(app, isAuthenticated, passport)
+main(app, isAuthenticated, passport)
+
 
 module.exports = app;

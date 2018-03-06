@@ -2,11 +2,6 @@ module.exports = function(app, isAuthenticated, passport) {
   var path = require('path');
   var router_img = require('./img/img.js');
 
-  var isAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated())
-      return next();
-    res.redirect('/loginfail');
-  };
 
   app.post('/login_check', passport.authenticate('local-login', {
       failureRedirect: '/loginfail',
