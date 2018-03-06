@@ -43,11 +43,11 @@ module.exports = function(app, isAuthenticated, passport) {
     router_DB.upload_history_get(res);
   });
 
-  router.get('/download_history_array', isAuthenticated, function(req, res) {
+  app.get('/download_history_array', isAuthenticated, function(req, res) {
     router_DB.download_history_array(res);
   });
 
-  router.get('/upload_history_array', isAuthenticated, function(req, res) {
+  app.get('/upload_history_array', isAuthenticated, function(req, res) {
     router_DB.upload_history_array(res);
   });
 }
