@@ -7,8 +7,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var userid;
+var userid = "";
 var app = express();
+
+var index = require('./routes/index');
+var main = require('./routes/main');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,9 +33,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-var index = require('./routes/index')(userid);
-var main = require('./routes/main')(userid);
 
 app.use('/', index);
 app.use('/api', main);
@@ -63,7 +64,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   console.log('deserializeUser() 호출됨.');
   console.dir(user);
-
+  console.log("userid = " + userid);
   done(null, user);
 });
 
@@ -81,3 +82,6 @@ passport.use('local-login', new LocalStrategy({
     return done(false, null)
   }
 }))
+
+
+module.exports = app;
