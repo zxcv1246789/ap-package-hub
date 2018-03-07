@@ -20,8 +20,10 @@ export default {
       data.id = this.id;
       data.password = this.password;
 
-      axios.get('http://39.119.118.152:3000/api/auth/facebook', headers: {
-          "Access-Control-Allow-Origin": "*"
+      axios.get('http://39.119.118.152:3000/api/auth/facebook', {
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
         })
         .then((response) => {
 
