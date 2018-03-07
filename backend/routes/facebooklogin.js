@@ -12,11 +12,11 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
   res.redirect('/loginsuccess');
 });
 
-app.get('/auth/google', passport.authenticate('google', {
+router.get('/auth/google', passport.authenticate('google', {
   scope: ['profile']
 }));
 
-app.get('/auth/google/callback', passport.authenticate('google', {
+router.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/login'
   }),
   function(req, res) {
