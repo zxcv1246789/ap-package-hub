@@ -11,6 +11,7 @@ var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
+app.options('*', cors())
 
 var index = require('./routes/index');
 var main = require('./routes/main');
@@ -19,8 +20,6 @@ var facebooklogin = require('./routes/facebooklogin');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-app.options('*', cors())
 
 var server = app.listen(3000, function() {
   console.log("RaspAP server has started on port 3000");
