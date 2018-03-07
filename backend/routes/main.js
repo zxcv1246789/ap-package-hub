@@ -8,7 +8,7 @@ var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
   if(req.user != null) {
-    console.log("user == " + req.user);
+    console.log("user == " + JSON.stringify(req.user));
   }
   if (req.isAuthenticated())
     return next();
