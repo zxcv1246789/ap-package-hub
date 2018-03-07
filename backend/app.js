@@ -10,19 +10,23 @@ var passport = require('passport');
 var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+});
 
 var index = require('./routes/index');
 var main = require('./routes/main');
 var facebooklogin = require('./routes/facebooklogin');
-
-app.all('/*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-    res.header("Access-Control-Max-Age", "3600");
-    res.header("Access-Control-Allow-Headers", "Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization");
-    next();
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -104,16 +108,15 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 passport.use(new GoogleStrategy({
-        clientID: '93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com',
-        clientSecret: 'jayLRcvfHCrirMwbpuGrnDs4',
-        callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback'
-    }, function(accessToken, refreshToken, profile, done) {
-        process.nextTick(function() {
-            user = profile;
-            return done(null, user);
-        });
-    }
-));
+  clientID: '93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com',
+  clientSecret: 'jayLRcvfHCrirMwbpuGrnDs4',
+  callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback'
+}, function(accessToken, refreshToken, profile, done) {
+  process.nextTick(function() {
+    user = profile;
+    return done(null, user);
+  });
+}));
 
 passport.use(new FacebookStrategy({
   clientID: '1700276160051590',
