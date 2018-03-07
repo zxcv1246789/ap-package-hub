@@ -1,6 +1,6 @@
 <template>
 <div>
-  <b-button v-on:click="googleloginbtn()">Google 로그인</b-button>
+  <b-button v-on:click="facebookloginbtn()">facebook 로그인</b-button>
 </div>
 </template>
 
@@ -15,23 +15,15 @@ export default {
     }
   },
   methods: {
-    googleloginbtn() {
+    facebookloginbtn() {
       let data = new Object();
       data.id = this.id;
       data.password = this.password;
 
-      axios.post('http://39.119.118.152:3000/login_check', data)
-        .then(function(response) {
-          console.log(response.data);
-          if(response.data == false) {
-            alert("아이디나 비밀번호가 일치하지 않습니다.");
-          }
+      axios.get('http://39.119.118.152:3000/api/auth/facebook')
+        .then((response) => {
+
         })
-        .catch(function() {
-          console.log('FAILURE!!');
-        });
-
-
     },
     //Handles a change on the file upload
     handleFileUpload() {
