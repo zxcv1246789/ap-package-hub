@@ -20,7 +20,7 @@ var facebooklogin = require('./routes/facebooklogin');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-var server = app.listen(80, function() {
+var server = app.listen(3000, function() {
   console.log("RaspAP server has started on port 80");
 });
 
