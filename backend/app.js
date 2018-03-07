@@ -10,6 +10,7 @@ var passport = require('passport');
 var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
 
 var index = require('./routes/index');
 var main = require('./routes/main');
@@ -98,6 +99,19 @@ passport.use('local-login', new LocalStrategy({
     return done(false, null)
   }
 }))
+
+passport.use(new GoogleStrategy({
+        clientID: '93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com',
+        clientSecret: 'jayLRcvfHCrirMwbpuGrnDs4',
+        callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback'
+    }, function(accessToken, refreshToken, profile, done) {
+        process.nextTick(function() {
+            user = profile;
+            return done(null, user);
+        });
+    }
+));
+
 passport.use(new FacebookStrategy({
   clientID: '1700276160051590',
   clientSecret: 'a3b0cc2907fc96877557053402d70b4a',
