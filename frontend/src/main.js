@@ -15,6 +15,8 @@ import Logout from './components/Logout'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+Vue.http.headers.common['Access-Control-Allow-Origin'] = 'http://39.119.118.152:3000'
+Vue.http.headers.common['Access-Control-Request-Method'] = '*'
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
