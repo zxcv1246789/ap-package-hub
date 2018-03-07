@@ -10,8 +10,9 @@ var passport = require('passport');
 var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+/*
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Origin', req.headers.origin);
@@ -22,7 +23,65 @@ app.use(function(req, res, next) {
   } else {
     next();
   }
+});*/
+
+passport.serializeUser(function(user, done) {
+  console.log('serializeUser() 호출됨.');
+  console.dir(user);
+
+  done(null, user);
 });
+
+passport.deserializeUser(function(obj, done) {
+  console.log('deserializeUser() 호출됨.');
+  console.dir(obj);
+
+  done(null, obj);
+});
+
+passport.use('local-login', new LocalStrategy({
+  usernameField: 'id',
+  passwordField: 'password',
+  session: true,
+  passReqToCallback: true
+}, function(req, id, password, done) {
+  if (id == 'admin' && password == '12341234') {
+    return done(null, {
+      'user_id': id,
+    });
+  } else {
+    return done(false, null)
+  }
+}))
+
+passport.use(new GoogleStrategy({
+  "clientID": "93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com",
+  "clientSecret": "jayLRcvfHCrirMwbpuGrnDs4",
+  "callbackURL": "http://39.119.118.152:3000/auth/google/callback"
+}, function(accessToken, refreshToken, profile, done) {
+  return done(null, profile);
+}));
+/*
+passport.use(new FacebookStrategy({
+  clientID: '1700276160051590',
+  clientSecret: 'a3b0cc2907fc96877557053402d70b4a',
+  callbackURL: 'http://39.119.118.152:3000/auth/facebook/callback',
+  passReqToCallback: true,
+}, (req, accessToken, refreshToken, profile, done) => {
+  User.findOne({
+    id: profile.id
+  }, (err, user) => {
+    if (user) {
+      return done(err, user);
+    } // 회원 정보가 있으면 로그인
+    const newUser = new User({ // 없으면 회원 생성
+      id: profile.id
+    });
+    newUser.save((user) => {
+      return done(null, user); // 새로운 회원 생성 후 로그인
+    });
+  });
+}));*/
 
 var index = require('./routes/index');
 var main = require('./routes/main');
@@ -78,60 +137,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-passport.serializeUser(function(user, done) {
-  console.log('serializeUser() 호출됨.');
-  console.dir(user);
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['openid email profile']
+  }));
 
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  console.log('deserializeUser() 호출됨.');
-  console.dir(user);
-
-  done(null, user);
-});
-
-passport.use('local-login', new LocalStrategy({
-  usernameField: 'id',
-  passwordField: 'password',
-  session: true,
-  passReqToCallback: true
-}, function(req, id, password, done) {
-  if (id == 'admin' && password == '12341234') {
-    return done(null, {
-      'user_id': id,
-    });
-  } else {
-    return done(false, null)
-  }
-}))
-
-passport.use(new GoogleStrategy({
-  clientID: '93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com',
-  clientSecret: 'jayLRcvfHCrirMwbpuGrnDs4',
-  callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback',
-}, function(accessToken, refreshToken, profile, done) {
-  return done(err, profile);
-}));
-
-passport.use(new FacebookStrategy({
-  clientID: '1700276160051590',
-  clientSecret: 'a3b0cc2907fc96877557053402d70b4a',
-  callbackURL: 'http://39.119.118.152:3000/api/auth/facebook/callback',
-  passReqToCallback: true,
-}, (req, accessToken, refreshToken, profile, done) => {
-  User.findOne({
-    id: profile.id
-  }, (err, user) => {
-    if (user) {
-      return done(err, user);
-    } // 회원 정보가 있으면 로그인
-    const newUser = new User({ // 없으면 회원 생성
-      id: profile.id
-    });
-    newUser.save((user) => {
-      return done(null, user); // 새로운 회원 생성 후 로그인
-    });
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/'
+  }),
+  function(req, res) {
+    // Authenticated successfully
+    res.redirect('/');
   });
-}));
