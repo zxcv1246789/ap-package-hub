@@ -7,9 +7,6 @@ var router_DB = require('./DB/DB.js');
 var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
-  if(req.session.passport.user != null) {
-      console.log("user = " + req.session.passport.user);
-  }
   if (req.isAuthenticated())
     return next();
   res.redirect('/loginfail');
