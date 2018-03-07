@@ -20,13 +20,14 @@ var facebooklogin = require('./routes/facebooklogin');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.options('*', cors())
+
 var server = app.listen(3000, function() {
   console.log("RaspAP server has started on port 3000");
 });
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
