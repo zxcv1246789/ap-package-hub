@@ -11,12 +11,12 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 }), function(req, res) {
   res.redirect('/loginsuccess');
 });
-app.get('/auth/google',
+router.get('/auth/google',
   passport.authenticate('google', {
     scope: ['openid email profile']
   }));
 
-app.get('/auth/google/callback',
+router.get('/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/'
   }),
