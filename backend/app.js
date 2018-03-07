@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -14,8 +15,6 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var index = require('./routes/index');
 var main = require('./routes/main');
 var facebooklogin = require('./routes/facebooklogin');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
