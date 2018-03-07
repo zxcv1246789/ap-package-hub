@@ -11,6 +11,18 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 }), function(req, res) {
   res.redirect('/loginsuccess');
 });
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['openid email profile']
+  }));
 
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/'
+  }),
+  function(req, res) {
+    // Authenticated successfully
+    res.redirect('/');
+  });
 
 module.exports = router;
