@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 var server = app.listen(3000, function() {
-  console.log("RaspAP server has started on port 80");
+  console.log("RaspAP server has started on port 3000");
 });
 
 // uncomment after placing your favicon in /public
