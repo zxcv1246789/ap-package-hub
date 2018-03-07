@@ -11,8 +11,6 @@ var cors = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
-app.options('*', cors())
-
 var index = require('./routes/index');
 var main = require('./routes/main');
 var facebooklogin = require('./routes/facebooklogin');
