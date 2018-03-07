@@ -24,15 +24,15 @@ router.get('/logout', isAuthenticated, function(req, res) {
   res.redirect('/loginfail');
 });
 
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-router.get('/loginfail', function (req, res, next) {
+router.get('/loginfail', function (req, res) {
   var data = false;
   res.send(data);
 });
-router.get('/loginsuccess', function (req, res, next) {
+router.get('/loginsuccess', function (req, res) {
   var data = true;
   res.send(data);
 });
