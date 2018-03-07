@@ -110,7 +110,8 @@ passport.use('local-login', new LocalStrategy({
 passport.use(new GoogleStrategy({
   clientID: '93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com',
   clientSecret: 'jayLRcvfHCrirMwbpuGrnDs4',
-  callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback'
+  callbackURL: 'http://39.119.118.152:3000/api/auth/google/callback',
+  accessType: 'offline'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
     user = profile;
