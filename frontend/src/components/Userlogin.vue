@@ -1,6 +1,6 @@
 <template>
 <div>
-  <b-button v-on:click="facebookloginbtn()">facebook 로그인</b-button>
+  <b-button v-on:click="googleloginbtn()">Google 로그인</b-button>
 </div>
 </template>
 
@@ -15,12 +15,16 @@ export default {
     }
   },
   methods: {
-    facebookloginbtn() {
+    googleloginbtn() {
       let data = new Object();
       data.id = this.id;
       data.password = this.password;
 
-      axios.get('http://39.119.118.152:3000/api/auth/google')
+      axios.get('http://raspapadmin.chickenkiller.com:3000/api/auth/google', {
+          headers: {
+            'Access-Control-Allow-Origin' : '*'
+          }
+        })
         .then((response) => {
 
         })

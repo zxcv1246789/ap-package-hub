@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource';
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 const routes = [
   {
