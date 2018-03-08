@@ -12,6 +12,7 @@ var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+app.use(cors());
 /*
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
