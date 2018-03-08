@@ -22,7 +22,10 @@ export default {
 
       axios.get('http://raspapadmin.chickenkiller.com:3000/api/auth/google', {
           headers: {
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            'Access-Control-Allow-Credentials' : true,
+            'Content-Type': 'application/json'
           }
         })
         .then((response) => {
