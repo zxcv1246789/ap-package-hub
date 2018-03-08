@@ -55,9 +55,9 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 passport.use(new GoogleStrategy({
-  "clientID": "93407170622-6aj2r2k85m4td8hk2jf250h96tv0asac.apps.googleusercontent.com",
-  "clientSecret": "jayLRcvfHCrirMwbpuGrnDs4",
-  "callbackURL": "http://39.119.118.152:3000/auth/google/callback"
+  clientID: "453032720086-b9u2mqngtc3drsdf82t858tts38orf9a.apps.googleusercontent.com",
+  clientSecret: "pPARlB0EPucZvbxuZBlIznEk",
+  callbackURL: "/api/auth/google/callback"
 }, function(accessToken, refreshToken, profile, done) {
   return done(null, profile);
 }));
@@ -136,17 +136,3 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
 });
-
-app.get('/auth/google',
-  passport.authenticate('google', {
-    scope: ['openid email profile']
-  }));
-
-app.get('/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/'
-  }),
-  function(req, res) {
-    // Authenticated successfully
-    res.redirect('/');
-  });

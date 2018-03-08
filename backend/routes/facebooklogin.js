@@ -13,7 +13,7 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
 });
 router.get('/auth/google',
   passport.authenticate('google', {
-    scope: ['openid email profile']
+    scope: ['profile']
   }));
 
 router.get('/auth/google/callback',
