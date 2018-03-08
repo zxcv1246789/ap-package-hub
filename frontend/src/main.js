@@ -55,6 +55,7 @@ const routes = [
 
 /* eslint-disable no-new */
 const router = new VueRouter({
+  mode: 'history',
   routes // routes: routes 의 약어
 })
 
