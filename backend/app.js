@@ -18,7 +18,7 @@ app.use(cors());
 
 passport.serializeUser(function(user, done) {
   console.log('serializeUser() 호출됨.');
-  console.log("user = " + obj.displayName);
+  console.log("user = " + user.displayName);
   done(null, user);
 });
 
