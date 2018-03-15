@@ -84,7 +84,7 @@ const items = new Array();
 
 export default {
   created() {
-    axios.get('http://39.119.118.152:3000/api/upload_history_array')
+    axios.get('http://39.119.118.152:3000/upload_history_array')
       .then((response) => {
         this.items = response.data
       })

@@ -1,7 +1,7 @@
 <template>
 <div>
-  <b-button href="http://raspapadmin.chickenkiller.com:3000/api/auth/google">Google 로그인</b-button>
-  <b-button href="http://raspapadmin.chickenkiller.com:3000/api/auth/facebook">Facebook 로그인</b-button>
+  <b-button href="http://raspapadmin.chickenkiller.com:3000/auth/google">Google 로그인</b-button>
+  <b-button href="http://raspapadmin.chickenkiller.com:3000/auth/facebook">Facebook 로그인</b-button>
 </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
       data.id = this.id;
       data.password = this.password;
 
-      axios.get('http://raspapadmin.chickenkiller.com:3000/api/auth/google', {
+      axios.get('http://raspapadmin.chickenkiller.com:3000/auth/google', {
           headers: {
             'Access-Control-Allow-Origin' : '*',
             'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',

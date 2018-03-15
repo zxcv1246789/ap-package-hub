@@ -9,7 +9,7 @@ const items = new Array();
 
 export default {
   created() {
-    axios.get('http://39.119.118.152:3000/api/package')
+    axios.get('http://39.119.118.152:3000/package')
       .then((response) => {
         if (response.data != '') {
           console.log(response.data);

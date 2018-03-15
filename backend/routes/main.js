@@ -5,15 +5,6 @@ module.exports = function(app, isAuthenticated, passport) {
   var router_DB = require('./DB/DB.js');
 
 
-  var isAuthenticated = function(req, res, next) {
-    if (req.user != null) {
-      console.log("user == " + JSON.stringify(req.user));
-    }
-    if (req.isAuthenticated())
-      return next();
-    res.redirect('/loginfail');
-  };
-
   app.get('/download', isAuthenticated, function(req, res) {
     var name = req.query.name;
     const file = router_download.download_package();
