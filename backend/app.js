@@ -12,19 +12,21 @@ var LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+var user_login_id = null;
+
 app.use(cors());
 
 passport.serializeUser(function(user, done) {
   console.log('serializeUser() 호출됨.');
   console.dir(user);
-
+  console.log("user = " + obj.displayName);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
   console.log('deserializeUser() 호출됨.');
   console.dir(obj);
-
+  console.log("user = " + obj.displayName);
   done(null, obj);
 });
 

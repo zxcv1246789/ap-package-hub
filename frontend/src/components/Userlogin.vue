@@ -1,7 +1,7 @@
 <template>
 <div>
-  <a href="http://raspapadmin.chickenkiller.com:3000/api/auth/google">google 로그인</a>
-  <b-button v-on:click="googleloginbtn()">Google 로그인</b-button>
+  <b-button href="http://raspapadmin.chickenkiller.com:3000/api/auth/google">Google 로그인</b-button>
+  <b-button href="http://raspapadmin.chickenkiller.com:3000/api/auth/facebook">Facebook 로그인</b-button>
 </div>
 </template>
 
