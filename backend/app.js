@@ -13,18 +13,6 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 app.use(cors());
-/*
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-  if ('OPTIONS' == req.method) {
-    res.send(200);
-  } else {
-    next();
-  }
-});*/
 
 passport.serializeUser(function(user, done) {
   console.log('serializeUser() 호출됨.');
@@ -47,6 +35,7 @@ passport.use('local-login', new LocalStrategy({
   passReqToCallback: true
 }, function(req, id, password, done) {
   if (id == 'admin' && password == '12341234') {
+
     return done(null, {
       'user_id': id,
     });
