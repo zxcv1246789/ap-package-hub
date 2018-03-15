@@ -13,18 +13,18 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var user_login_id = null;
+app.use(cors());
 
 require('./server.js')(app);
 
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
 
 var server = app.listen(3000, function() {
   console.log("RaspAP server has started on port 3000");
 });
-
-app.use(cors());
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
