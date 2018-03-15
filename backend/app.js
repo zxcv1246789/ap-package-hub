@@ -18,7 +18,6 @@ app.use(cors());
 require('./server.js')(app);
 
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
 
 var server = app.listen(3000, function() {
   console.log("RaspAP server has started on port 3000");
